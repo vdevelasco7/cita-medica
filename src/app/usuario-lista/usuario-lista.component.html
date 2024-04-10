@@ -1,1 +1,30 @@
-<p>usuario-lista works!</p>
+<h2 class="text-center">Listado de Usuarios</h2>
+
+<div class="text-end py-2">
+    <button class="btn btn-primary" routerLink="/nuevo">
+        Nuevo Usuario
+    </button>
+</div>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Usuario</th>
+            <th>Clave</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (usuario of usuarios; track usuario.id) {
+            <tr>
+                <th>{{usuario.id}}</th>
+                <th>{{usuario.nombre}}</th>
+                <th>{{usuario.apellidos}}</th>
+                <th>{{usuario.usuario}}</th>
+                <th>{{usuario.clave}}</th>
+            </tr>
+        }
+    </tbody>
+</table>
