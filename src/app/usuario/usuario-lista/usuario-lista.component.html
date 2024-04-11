@@ -14,16 +14,27 @@
             <th>Apellidos</th>
             <th>Usuario</th>
             <th>Clave</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @for (usuario of usuarios; track usuario.id) {
             <tr>
-                <th>{{usuario.id}}</th>
-                <th>{{usuario.nombre}}</th>
-                <th>{{usuario.apellidos}}</th>
-                <th>{{usuario.usuario}}</th>
-                <th>{{usuario.clave}}</th>
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellidos}}</td>
+                <td>{{usuario.usuario}}</td>
+                <td>{{usuario.clave}}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" [routerLink]="[usuario.id, 'editar']">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger">
+                            Eliminar
+                        </button>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>

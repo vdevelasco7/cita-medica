@@ -1,38 +1,40 @@
 <h2 class="mb-5">Nuevo Usuario</h2>
 
 <div class="row row-cols-3 justify-content-center">
-    <form [formGroup]="form" (ngSubmit)="create()">
-        <div class="mb-3">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" type="text" placeholder="Nombre" class="form-control"
-                formControlName="nombre">
-        </div>
+    @if (form) {
+        <form [formGroup]="form" (ngSubmit)="create()">
+            <div class="mb-3">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" placeholder="Nombre" class="form-control"
+                    formControlName="nombre">
+            </div>
+        
+            <div class="mb-3">
+                <label for="apellidos">Apellidos</label>
+                <input id="apellidos" type="text" placeholder="Apellidos" class="form-control"
+                    formControlName="apellidos">
+            </div>
     
-        <div class="mb-3">
-            <label for="apellidos">Apellidos</label>
-            <input id="apellidos" type="text" placeholder="Apellidos" class="form-control"
-                formControlName="apellidos">
-        </div>
-
-        <div class="mb-3">
-            <label for="usuario">Usuario</label>
-            <input id="usuario" type="text" placeholder="Usuario" class="form-control"
-                formControlName="usuario">
-        </div>
-
-        <div class="mb-3">
-            <label for="clave">Clave</label>
-            <input id="clave" type="text" placeholder="Clave" class="form-control"
-                formControlName="clave">
-        </div>
+            <div class="mb-3">
+                <label for="usuario">Usuario</label>
+                <input id="usuario" type="text" placeholder="Usuario" class="form-control"
+                    formControlName="usuario">
+            </div>
     
-        <div class="text-end">
-            <button type="button" class="btn btn-light" routerLink="/">
-                Cancelar
-            </button>
-            <button class="btn btn-primary ms-2">
-                Guardar Usuario
-            </button>
-        </div>
-    </form>
+            <div class="mb-3">
+                <label for="clave">Clave</label>
+                <input id="clave" type="text" placeholder="Clave" class="form-control"
+                    formControlName="clave">
+            </div>
+        
+            <div class="text-end">
+                <button type="button" class="btn btn-danger" routerLink="/">
+                    Cancelar
+                </button>
+                <button class="btn btn-primary ms-2">
+                    Guardar Usuario
+                </button>
+            </div>
+        </form>
+    }
 </div>

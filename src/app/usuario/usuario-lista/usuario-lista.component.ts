@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
 import { DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Usuario } from '../model/usuario.interface';
 
 @Component({
   selector: 'app-usuario-lista',
@@ -13,11 +14,11 @@ import { RouterModule } from '@angular/router';
 export default class UsuarioListaComponent implements OnInit{
   private UsuarioService = inject(UsuarioService);
 
-  usuarios: any = [];
+  usuarios: Usuario[] = [];
 
   ngOnInit(): void {
     this.UsuarioService.list()
-      .subscribe((usuarios: any) => {
+      .subscribe(usuarios => {
       this.usuarios = usuarios;
     })
   }
