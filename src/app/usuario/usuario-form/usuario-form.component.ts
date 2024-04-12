@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../services/usuario.service';
+import { Usuario } from '../model/usuario.interface';
 
 
 @Component({
@@ -19,13 +20,15 @@ export default class UsuarioFormComponent implements OnInit{
   private usuarioServicio = inject(UsuarioService);
 
   form?:FormGroup;
+  usuario?: Usuario;
 
   ngOnInit(): void {
     const id = this.actRuta.snapshot.paramMap.get('id');
-
+    
     if(id){
       this.usuarioServicio.get(parseInt(id))
         .subscribe(usuario => {
+          this.usuario = usuario;
           this.form = this.fb.group({
             nombre: [usuario.nombre, [Validators.required]],
             apellidos: [usuario.apellidos, [Validators.required]],
@@ -43,11 +46,20 @@ export default class UsuarioFormComponent implements OnInit{
     }
   }
 
-  create() {
-    const usuario = this.form!.value;
-    this.usuarioServicio.create(usuario)
+  save() {
+    const usuarioForm = this.form!.value;
+
+    if(this.usuario) {
+      this.usuarioServicio.update(this.usuario.id, usuarioForm)
       .subscribe(() => {
         this.ruta.navigate(['/']);
       });
+    }else {
+      this.usuarioServicio.create(usuarioForm)
+      .subscribe(() => {
+        this.ruta.navigate(['/']);
+      });
+    }
+
   }
 }

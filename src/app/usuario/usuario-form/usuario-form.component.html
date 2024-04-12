@@ -1,8 +1,14 @@
-<h2 class="mb-5">Nuevo Usuario</h2>
+<h2 class="mb-5">
+    @if (usuario) {
+        Editar
+    } @else {
+        Nuevo
+    } Usuario
+</h2>
 
 <div class="row row-cols-3 justify-content-center">
     @if (form) {
-        <form [formGroup]="form" (ngSubmit)="create()">
+        <form [formGroup]="form" (ngSubmit)="save()">
             <div class="mb-3">
                 <label for="nombre">Nombre</label>
                 <input id="nombre" type="text" placeholder="Nombre" class="form-control"
@@ -32,7 +38,11 @@
                     Cancelar
                 </button>
                 <button class="btn btn-primary ms-2">
-                    Guardar Usuario
+                    @if (usuario) {
+                        Actualizar
+                    } @else {
+                        Guardar
+                    } Usuario
                 </button>
             </div>
         </form>

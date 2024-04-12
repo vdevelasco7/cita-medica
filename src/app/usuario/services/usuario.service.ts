@@ -14,10 +14,10 @@ export class UsuarioService {
   get(id: number) {
     return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`);
   }
-  create(usuario: any) {
+  create(usuario: Usuario) {
     return this.http.post<Usuario>('http://localhost:8080/usuarios', usuario);
   }
-  update(id: number, usuario: any) {
+  update(id: number, usuario: Usuario) {
     return this.http.put<Usuario>(`http://localhost:8080/usuarios/${id}`, usuario);
   }
   delete(id: number) {
