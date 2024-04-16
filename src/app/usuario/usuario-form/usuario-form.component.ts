@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../services/usuario.service';
 import { Usuario } from '../model/usuario.interface';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -21,6 +22,7 @@ export default class UsuarioFormComponent implements OnInit{
 
   form?:FormGroup;
   usuario?: Usuario;
+  errors: string[] = [];
 
   ngOnInit(): void {
     const id = this.actRuta.snapshot.paramMap.get('id');
@@ -47,19 +49,27 @@ export default class UsuarioFormComponent implements OnInit{
   }
 
   save() {
-    const usuarioForm = this.form!.value;
-
-    if(this.usuario) {
-      this.usuarioServicio.update(this.usuario.id, usuarioForm)
-      .subscribe(() => {
-        this.ruta.navigate(['/']);
-      });
-    }else {
-      this.usuarioServicio.create(usuarioForm)
-      .subscribe(() => {
-        this.ruta.navigate(['/']);
-      });
+    if(this.form?.invalid) {
+      return;
     }
 
+    const usuarioForm = this.form!.value;
+    let request: Observable<Usuario>;
+
+    if(this.usuario) {
+      request = this.usuarioServicio.update(this.usuario.id, usuarioForm)
+    }else {
+      request = this.usuarioServicio.create(usuarioForm)
+    }
+    request
+      .subscribe({
+        next: () =>{
+          this.errors = [];
+          this.ruta.navigate(['/']);
+        },
+        error: response => {
+          this.errors = response.error.errors;
+        }
+      })
   }
 }
