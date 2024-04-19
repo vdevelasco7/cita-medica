@@ -13,7 +13,7 @@ export const routes: Routes = [
         path: 'usuario/:id/editar',
         loadComponent: () => import('./usuario/usuario-form/usuario-form.component')
     },
-    {
+    /*{
         path: 'medico',
         loadComponent: () => import('./medico/medico-lista/medico-lista.component')
     },
@@ -24,8 +24,8 @@ export const routes: Routes = [
     {
         path: 'medico/:id/editar',
         loadComponent: () => import('./medico/medico-form/medico-form.component')
-    }
-    /*{
+    },
+    {
         path: 'paciente',
         loadComponent: () => import('./paciente/paciente-lista/paciente-lista.component')
     },
