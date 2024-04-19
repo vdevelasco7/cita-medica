@@ -6,13 +6,13 @@ export const routes: Routes = [
         loadComponent: () => import('./usuario/usuario-lista/usuario-lista.component')
     },
     {
-        path: 'usuario/nuevo',
+        path: 'nuevo',
         loadComponent: () => import('./usuario/usuario-form/usuario-form.component')
     },
     {
-        path: 'usuario/:id/editar',
+        path: ':id/editar',
         loadComponent: () => import('./usuario/usuario-form/usuario-form.component')
-    },
+    }
     /*{
         path: 'medico',
         loadComponent: () => import('./medico/medico-lista/medico-lista.component')
