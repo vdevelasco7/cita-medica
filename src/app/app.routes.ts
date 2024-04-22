@@ -1,7 +1,22 @@
 import { Routes } from '@angular/router';
+import UsuarioListaComponent from './usuario/usuario-lista/usuario-lista.component';
+import MedicoListaComponent from './medico/medico-lista/medico-lista.component';
+import UsuarioFormComponent from './usuario/usuario-form/usuario-form.component';
+import MedicoFormComponent from './medico/medico-form/medico-form.component';
 
 export const routes: Routes = [
-    {
+    
+    {path: 'usuario', component: UsuarioListaComponent},
+    {path: 'usuario/nuevo', component: UsuarioFormComponent},
+    {path: 'usuario/:id/editar', component: UsuarioFormComponent},
+    {path: 'medico', component: MedicoListaComponent},
+    {path: 'medico/nuevo', component: MedicoFormComponent},
+    {path: 'medico/:id/editar', component: MedicoFormComponent},
+    
+];
+    
+    
+    /*{
         path: 'usuario',
         loadComponent: () => import('./usuario/usuario-lista/usuario-lista.component')
     },
@@ -12,8 +27,9 @@ export const routes: Routes = [
     {
         path: ':id/editar',
         loadComponent: () => import('./usuario/usuario-form/usuario-form.component')
-    }
-    /*{
+    },
+    {
+    
         path: 'medico',
         loadComponent: () => import('./medico/medico-lista/medico-lista.component')
     },
@@ -39,4 +55,3 @@ export const routes: Routes = [
     }
     */
 
-];

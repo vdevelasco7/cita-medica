@@ -1,1 +1,43 @@
-<p>medico-lista works!</p>
+<h2 class="mb-5">Listado de Médicos</h2>
+
+<div class="text-end py-2">
+    <button class="btn btn-primary" routerLink="/medico/nuevo">
+        Nuevo Médico
+    </button>
+</div>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Usuario</th>
+            <th>Clave</th>
+            <th>Nº Colegiado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (medico of medicos; track medico.id) {
+            <tr>
+                <td>{{medico.id}}</td>
+                <td>{{medico.nombre}}</td>
+                <td>{{medico.apellidos}}</td>
+                <td>{{medico.usuario}}</td>
+                <td>{{medico.clave}}</td>
+                <td>{{medico.numColegiado}}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" [routerLink]="[medico.id, 'editar']">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteUsuario(medico)">
+                            Eliminar
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
