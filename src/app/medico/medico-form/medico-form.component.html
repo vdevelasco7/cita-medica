@@ -1,90 +1,90 @@
 <h2 class="mb-5">
     @if (medico) {
-        Editar
-    } @else {
-        Nuevo
-    } Médico
+        Editar Médico
+    } else {
+        Nuevo Médico
+    }
 </h2>
 
 <div class="row row-cols-3 justify-content-center">
     @if (form) {
         <div>
-            <!-- Si tiene un elemento salta la alerta de error -->
-        @if (errors.length) {
-            <div class="alert alert-danger">
-                <p>Error en el Médico:</p>
-                <ul>
-                    @for (error of errors; track error) {
-                    <li>{{ error }}</li>
-                }
-                </ul>
-            </div>
-        }
+            <!-- Si tiene un elemento, salta la alerta de error -->
+            @if (errors.length) {
+                <div class="alert alert-danger">
+                    <p>Error en el Médico:</p>
+                    <ul>
+                        @for (let i = 0; i < errors.length; i++) {
+                            <li>{{ errors[i] }}</li>
+                        }
+                    </ul>
+                </div>
+            }
 
-        <form [formGroup]="form" (ngSubmit)="save()">
-            <div class="mb-3">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" placeholder="Nombre" class="form-control"
-                    formControlName="nombre">
+            <form [formGroup]="form" (ngSubmit)="save()">
+                <div class="mb-3">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" type="text" placeholder="Nombre" class="form-control"
+                        formControlName="nombre">
 
                     @if (form.get('nombre')?.hasError('required') && form.get('nombre')?.touched) {
                         <p class="invalid-feedback d-block">El nombre es obligatorio</p>
                     }
-            </div>
-        
-            <div class="mb-3">
-                <label for="apellidos">Apellidos</label>
-                <input id="apellidos" type="text" placeholder="Apellidos" class="form-control"
-                    formControlName="apellidos">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="apellidos">Apellidos</label>
+                    <input id="apellidos" type="text" placeholder="Apellidos" class="form-control"
+                        formControlName="apellidos">
 
                     @if (form.get('apellidos')?.hasError('required') && form.get('apellidos')?.touched) {
                         <p class="invalid-feedback d-block">Los apellidos son obligatorios</p>
                     }
-            </div>
-    
-            <div class="mb-3">
-                <label for="usuario">Usuario</label>
-                <input id="usuario" type="text" placeholder="Usuario" class="form-control"
-                    formControlName="usuario">
+                </div>
+        
+                <div class="mb-3">
+                    <label for="usuario">Usuario</label>
+                    <input id="usuario" type="text" placeholder="Usuario" class="form-control"
+                        formControlName="usuario">
 
                     @if (form.get('usuario')?.hasError('required') && form.get('usuario')?.touched) {
                         <p class="invalid-feedback d-block">El usuario es obligatorio</p>
                     }
-            </div>
-    
-            <div class="mb-3">
-                <label for="clave">Clave</label>
-                <input id="clave" type="text" placeholder="Clave" class="form-control"
-                    formControlName="clave">
+                </div>
+        
+                <div class="mb-3">
+                    <label for="clave">Clave</label>
+                    <input id="clave" type="text" placeholder="Clave" class="form-control"
+                        formControlName="clave">
 
                     @if (form.get('clave')?.hasError('required') && form.get('clave')?.touched) {
                         <p class="invalid-feedback d-block">La clave es obligatoria</p>
                     }
-            </div>
-        
-            <div class="mb-3">
-                <label for="numColegiado">Nº Colegiado</label>
-                <input id="numColegiado" type="text" placeholder="Nº Colegiado" class="form-control"
-                    formControlName="numColegiado">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="numColegiado">Nº Colegiado</label>
+                    <input id="numColegiado" type="text" placeholder="Nº Colegiado" class="form-control"
+                        formControlName="numColegiado">
 
                     @if (form.get('numColegiado')?.hasError('required') && form.get('numColegiado')?.touched) {
                         <p class="invalid-feedback d-block">El número de colegiado es obligatorio</p>
                     }
-            </div>
+                </div>
 
-            <div class="text-end">
-                <button type="button" class="btn btn-danger" routerLink="/medico">
-                    Cancelar
-                </button>
-                <button class="btn btn-primary ms-2">
-                    @if (medico) {
-                        Actualizar
-                    } @else {
-                        Guardar
-                    } Médico
-                </button>
-            </div>
-        </form>
+                <div class="text-end">
+                    <button type="button" class="btn btn-danger" routerLink="/medico">
+                        Cancelar
+                    </button>
+                    <button class="btn btn-primary ms-2">
+                        @if (medico) {
+                            Actualizar
+                        } @else {
+                            Guardar
+                        } Médico
+                    </button>
+                </div>
+            </form>
         </div>
     }
 </div>
