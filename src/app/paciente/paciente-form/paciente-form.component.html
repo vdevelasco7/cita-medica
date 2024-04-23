@@ -1,9 +1,9 @@
 <h2 class="mb-5">
-    @if (medico) {
+    @if (paciente) {
         Editar
     } @else {
         Nuevo
-    } Médico
+    } Paciente
 </h2>
 
 <div class="row row-cols-3 justify-content-center">
@@ -12,7 +12,7 @@
             <!-- Si tiene un elemento salta la alerta de error -->
         @if (errors.length) {
             <div class="alert alert-danger">
-                <p>Error en el Médico:</p>
+                <p>Error en el Paciente:</p>
                 <ul>
                     @for (error of errors; track error) {
                     <li>{{ error }}</li>
@@ -63,28 +63,58 @@
             </div>
 
             <div class="mb-3">
-                <label for="numColegiado">Nº Colegiado</label>
-                <input id="numColegiado" type="text" placeholder="Nº Colegiado" class="form-control"
-                    formControlName="numColegiado">
+                <label for="NSS">NSS</label>
+                <input id="NSS" type="text" placeholder="NSS" class="form-control"
+                    formControlName="NSS">
 
-                    @if (form.get('numColegiado')?.hasError('required') && form.get('numColegiado')?.touched) {
-                        <p class="invalid-feedback d-block">El número de colegiado es obligatorio</p>
+                    @if (form.get('NSS')?.hasError('required') && form.get('NSS')?.touched) {
+                        <p class="invalid-feedback d-block">El NSS es obligatorio</p>
+                    }
+            </div>
+
+            <div class="mb-3">
+                <label for="numTarjeta">Nº Tarjeta</label>
+                <input id="numTarjeta" type="text" placeholder="Nº Tarjeta" class="form-control"
+                    formControlName="numTarjeta">
+
+                    @if (form.get('numTarjeta')?.hasError('required') && form.get('numTarjeta')?.touched) {
+                        <p class="invalid-feedback d-block">El número de tarjeta es obligatorio</p>
+                    }
+            </div>
+
+            <div class="mb-3">
+                <label for="telefono">Teléfono</label>
+                <input id="telefono" type="text" placeholder="Teléfono" class="form-control"
+                    formControlName="telefono">
+
+                    @if (form.get('telefono')?.hasError('required') && form.get('telefono')?.touched) {
+                        <p class="invalid-feedback d-block">El teléfono es obligatorio</p>
+                    }
+            </div>
+
+            <div class="mb-3">
+                <label for="direccion">Dirección</label>
+                <input id="direccion" type="text" placeholder="Dirección" class="form-control"
+                    formControlName="direccion">
+
+                    @if (form.get('direccion')?.hasError('required') && form.get('direccion')?.touched) {
+                        <p class="invalid-feedback d-block">La dirección es obligatoria</p>
                     }
             </div>
         
             <div class="text-end">
-                <button type="button" class="btn btn-danger" routerLink="/medico">
+                <button type="button" class="btn btn-danger" routerLink="/paciente">
                     Cancelar
                 </button>
                 <button class="btn btn-primary ms-2">
-                    @if (medico) {
+                    @if (paciente) {
                         Actualizar
                     } @else {
                         Guardar
-                    } Médico
+                    } Paciente
                 </button>
             </div>
-            </form>
+        </form>
         </div>
     }
 </div>

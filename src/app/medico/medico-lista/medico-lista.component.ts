@@ -27,7 +27,7 @@ export default class MedicoListaComponent implements OnInit{
     });
   }
 
-  deleteUsuario(medico: Medico) {
+  deleteMedico(medico: Medico) {
     this.MedicoService.delete(medico.id)
       .subscribe(() => {
         this.loadAll();

@@ -1,0 +1,49 @@
+<h2 class="mb-5">Listado de Pacientes</h2>
+
+<div class="text-end py-2">
+    <button class="btn btn-primary" routerLink="/paciente/nuevo">
+        Nuevo Paciente
+    </button>
+</div>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Usuario</th>
+            <th>Clave</th>
+            <th>NSS</th>
+            <th>NºTarjeta</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (paciente of pacientes; track paciente.id) {
+            <tr>
+                <td>{{paciente.id}}</td>
+                <td>{{paciente.nombre}}</td>
+                <td>{{paciente.apellidos}}</td>
+                <td>{{paciente.usuario}}</td>
+                <td>{{paciente.clave}}</td>
+                <td>{{paciente.NSS}}</td>
+                <td>{{paciente.numTarjeta}}</td>
+                <td>{{paciente.telefono}}</td>
+                <td>{{paciente.direccion}}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" [routerLink]="[paciente.id, 'editar']">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger" (click)="deletePaciente(paciente)">
+                            Eliminar
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
