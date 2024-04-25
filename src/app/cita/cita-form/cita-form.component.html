@@ -1,0 +1,70 @@
+<h2 class="mb-5">
+    @if (cita) {
+        Editar
+    } @else {
+        Nueva
+    } Cita
+</h2>
+
+<div class="row row-cols-3 justify-content-center">
+    @if (form) {
+        <div>
+            <!-- Si tiene un elemento salta la alerta de error -->
+        @if (errors.length) {
+            <div class="alert alert-danger">
+                <p>Error en la Cita:</p>
+                <ul>
+                    @for (error of errors; track error) {
+                    <li>{{ error }}</li>
+                }
+                </ul>
+            </div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="mb-3">
+                <label for="fechaHora">Fecha y Hora</label>
+                <input id="fechaHora" type="text" placeholder="Fecha y Hora" class="form-control"
+                    formControlName="fechaHora">
+
+                    @if (form.get('fechaHora')?.hasError('required') && form.get('fechaHora')?.touched) {
+                        <p class="invalid-feedback d-block">La Fecha y Hora son obligatorias</p>
+                    }
+            </div>
+        
+            <div class="mb-3">
+                <label for="motivoCita">Motivo Cita</label>
+                <input id="motivoCita" type="text" placeholder="Motivo Cita" class="form-control"
+                    formControlName="motivoCita">
+
+                    @if (form.get('motivoCita')?.hasError('required') && form.get('motivoCita')?.touched) {
+                        <p class="invalid-feedback d-block">El Motivo Cita es obligatorio</p>
+                    }
+            </div>
+    
+            <div class="mb-3">
+                <label for="attribute11">Attribute11</label>
+                <input id="attribute11" type="text" placeholder="Attribute11" class="form-control"
+                    formControlName="attribute11">
+
+                    @if (form.get('attribute11')?.hasError('required') && form.get('attribute11')?.touched) {
+                        <p class="invalid-feedback d-block">El Attribute11 es obligatorio</p>
+                    }
+            </div>
+        
+            <div class="text-end">
+                <button type="button" class="btn btn-danger" routerLink="/cita">
+                    Cancelar
+                </button>
+                <button class="btn btn-primary ms-2">
+                    @if (cita) {
+                        Actualizar
+                    } @else {
+                        Guardar
+                    } Cita
+                </button>
+            </div>
+        </form>
+        </div>
+    }
+</div>

@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { PacienteService } from '../services/paciente.service';
 import { Paciente } from '../model/paciente.interface';
-import { DatePipe } from '@angular/common';
-import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-paciente-lista',
@@ -11,7 +12,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './paciente-lista.component.html',
   styleUrl: './paciente-lista.component.css'
 })
-export class PacienteListaComponent {
+export class PacienteListaComponent implements OnInit{
   private PacienteService = inject(PacienteService);
 
   pacientes: Paciente[] = [];

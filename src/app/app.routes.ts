@@ -5,6 +5,8 @@ import UsuarioFormComponent from './usuario/usuario-form/usuario-form.component'
 import MedicoFormComponent from './medico/medico-form/medico-form.component';
 import { PacienteListaComponent } from './paciente/paciente-lista/paciente-lista.component';
 import PacienteFormComponent from './paciente/paciente-form/paciente-form.component';
+import CitaListaComponent from './cita/cita-lista/cita-lista.component';
+import CitaFormComponent from './cita/cita-form/cita-form.component';
 
 export const routes: Routes = [
     
@@ -21,7 +23,12 @@ export const routes: Routes = [
     //PACIENTE
     {path: 'paciente', component: PacienteListaComponent},
     {path: 'paciente/nuevo', component: PacienteFormComponent},
-    {path: 'paciente/:id/editar', component: PacienteFormComponent}
+    {path: 'paciente/:id/editar', component: PacienteFormComponent},
+
+    //CITA
+    {path: 'cita', component: CitaListaComponent},
+    {path: 'cita/nuevo', component: CitaFormComponent},
+    {path: 'cita/:id/editar', component: CitaFormComponent}
     
 ];
     

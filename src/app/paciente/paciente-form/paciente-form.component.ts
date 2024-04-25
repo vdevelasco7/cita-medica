@@ -35,7 +35,7 @@ export default class PacienteFormComponent implements OnInit{
             apellidos: [paciente.apellidos, [Validators.required]],
             usuario: [paciente.usuario, [Validators.required]],
             clave: [paciente.clave, [Validators.required]],
-            nss: [paciente.NSS, [Validators.required]],
+            NSS: [paciente.NSS, [Validators.required]],
             numTarjeta: [paciente.numTarjeta, [Validators.required]],
             telefono: [paciente.telefono, [Validators.required]],
             direccion: [paciente.direccion, [Validators.required]]
@@ -47,7 +47,7 @@ export default class PacienteFormComponent implements OnInit{
         apellidos: ['', [Validators.required]],
         usuario: ['', [Validators.required]],
         clave: ['', [Validators.required]],
-        nss: ['', [Validators.required]],
+        NSS: ['', [Validators.required]],
         numTarjeta: ['', [Validators.required]],
         telefono: ['', [Validators.required]],
         direccion: ['', [Validators.required]]

@@ -1,0 +1,39 @@
+<h2 class="mb-5">Listado de Citas</h2>
+
+<div class="text-end py-2">
+    <button class="btn btn-primary" routerLink="/cita/nuevo">
+        Crear Cita
+    </button>
+</div>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Fecha y Hora</th>
+            <th>Motivo Cita</th>
+            <th>Attribute11</th>
+            <th></th>  
+        </tr>
+    </thead>
+    <tbody>
+        @for (cita of citas; track cita.id) {
+            <tr>
+                <td>{{cita.id}}</td>
+                <td>{{cita.fechaHora}}</td>
+                <td>{{cita.motivoCita}}</td>
+                <td>{{cita.attribute11}}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" [routerLink]="[cita.id, 'editar']">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteCita(cita)">
+                            Eliminar
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
